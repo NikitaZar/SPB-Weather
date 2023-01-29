@@ -1,8 +1,23 @@
 <resources>
     <string name="app_name">SPB Weather</string>
+
     <string name="home">Home</string>
     <string name="details">Details</string>
     <string name="forecast">Forecast</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="weather_text">Weather</string>
+
+    <string name="weather_prefix_text">Weather: %1$s</string>
+    <string name="temp_prefix_text">Temp: %1$s °C</string>
+    <string name="temp_feels_like_prefix_text">Feels like: %1$s °C</string>
+    <string name="temp_max_prefix_text">Temp Max: %1$s °C</string>
+    <string name="temp_min_prefix_text">Temp Min: %1$s °C</string>
+    <string name="pressure_prefix_text">Pressure: %1$s hPa</string>
+    <string name="humidity_prefix_text">Humidity: %1$s %%</string>
+    <string name="visibility_prefix_text">Visibility: %1$s %%</string>
+    <string name="wind_speed_prefix_text">Wind speed: %1$s m/s</string>
+    <string name="wind_deg_prefix_text">Wind direction: %1$s</string>
+    <string name="clouds_prefix_text">Clouds: %1$s</string>
+    <string name="sunrise_prefix_text">Sunrise: %1$s</string>
+    <string name="sunset_prefix_text">Sunset: %1$s</string>
 </resources>

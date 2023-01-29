@@ -7,7 +7,8 @@ data class WeatherDataDomain(
     val main: MainDataDomain,
     val visibility: Float,
     val wind: WindDomain,
-    val dt: Int,
+    val clouds: CloudsDomain,
+    val dt: Long,
     val sys: SysDomain,
     val timezone: Int,
     val id: Int,
@@ -21,7 +22,7 @@ data class CoordDomain(
 
 data class WeatherDomain(
     val id: Int,
-    val math: String?,
+    val main: String,
     val description: String,
     val icon: String,
 )
@@ -44,8 +45,12 @@ data class SysDomain(
     val type: Int,
     val id: Int,
     val country: String,
-    val sunrise: Int,
-    val sunset: Int,
+    val sunrise: Long,
+    val sunset: Long,
+)
+
+data class CloudsDomain(
+    val all: Int,
 )
 
 

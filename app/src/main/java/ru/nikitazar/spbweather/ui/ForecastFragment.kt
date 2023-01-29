@@ -6,12 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 import ru.nikitazar.spbweather.R
 import ru.nikitazar.spbweather.databinding.FragmentDetailsBinding
 import ru.nikitazar.spbweather.databinding.FragmentForecastBinding
 import ru.nikitazar.spbweather.databinding.FragmentHomeBinding
 import ru.nikitazar.spbweather.viewModel.WeatherViewModel
 
+@AndroidEntryPoint
 class ForecastFragment : Fragment() {
 
     lateinit var binding: FragmentForecastBinding

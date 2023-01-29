@@ -18,6 +18,7 @@ class HomeFragment : Fragment() {
 
     lateinit var binding: FragmentHomeBinding
     private val viewModel: WeatherViewModel by viewModels()
+    private val df = DecimalFormat("#.#")
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,7 +28,6 @@ class HomeFragment : Fragment() {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         viewModel.dataWeather.observe(viewLifecycleOwner) {
-            val df = DecimalFormat("#.#")
             with(binding) {
                 city.text = it.name
                 temp.text = df.format(it.main.temp)

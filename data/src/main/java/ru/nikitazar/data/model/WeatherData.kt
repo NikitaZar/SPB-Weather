@@ -1,6 +1,9 @@
 package ru.nikitazar.domain.model
 
 import com.google.gson.annotations.SerializedName
+import java.util.*
+
+private const val TIME_PATTERN = "dd.MM.yyyy hh:mm"
 
 data class WeatherData(
     val coord: Coord,
@@ -9,7 +12,8 @@ data class WeatherData(
     val main: MainData,
     val visibility: Float,
     val wind: Wind,
-    val dt: Int,
+    val clouds: Clouds,
+    val dt: Long,
     val sys: Sys,
     val timezone: Int,
     val id: Int,
@@ -23,13 +27,17 @@ data class WeatherData(
         main = main.toDomain(),
         visibility = visibility,
         wind = wind.toDomain(),
+        clouds = clouds.toDomain(),
         dt = dt,
         sys = sys.toDomain(),
         timezone = timezone,
         id = id,
         name = name,
     )
+
+    private fun List<Weather>.toDomain() = map { it.toDomain() }
 }
+
 
 data class Coord(
     val lon: Float,
@@ -43,19 +51,17 @@ data class Coord(
 
 data class Weather(
     val id: Int,
-    val math: String,
+    val main: String,
     val description: String,
     val icon: String,
 ) {
     fun toDomain() = WeatherDomain(
         id = id,
-        math = math,
+        main = main,
         description = description,
         icon = icon,
     )
 }
-
-fun List<Weather>.toDomain() = map { it.toDomain() }
 
 private const val KELVIN_COEFFICIENT = 272.1f
 
@@ -94,8 +100,8 @@ data class Sys(
     val type: Int,
     val id: Int,
     val country: String,
-    val sunrise: Int,
-    val sunset: Int,
+    val sunrise: Long,
+    val sunset: Long,
 ) {
     fun toDomain() = SysDomain(
         type = type,
@@ -104,6 +110,12 @@ data class Sys(
         sunrise = sunrise,
         sunset = sunset,
     )
+}
+
+data class Clouds(
+    val all: Int,
+) {
+    fun toDomain() = CloudsDomain(all)
 }
 
 

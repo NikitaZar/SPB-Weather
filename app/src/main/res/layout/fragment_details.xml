@@ -1,14 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".ui.DetailsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:background="@drawable/background"
+        android:orientation="vertical"
+        android:padding="@dimen/common_spacing">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/weather_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/common_spacing"
+            android:gravity="center"
+            android:text="@string/weather_text"
+            android:textSize="@dimen/title_text" />
+
+        <TextView
+            android:id="@+id/dt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/common_spacing"
+            android:gravity="center"
+            tools:text="16.11.23 11:00" />
+
+        <TextView
+            android:id="@+id/weather_state"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/weather_prefix_text" />
+
+        <TextView
+            android:id="@+id/temp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/temp_prefix_text" />
+
+        <TextView
+            android:id="@+id/feels_like"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/temp_feels_like_prefix_text" />
+
+        <TextView
+            android:id="@+id/temp_max"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/temp_max_prefix_text" />
+
+        <TextView
+            android:id="@+id/temp_min"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/temp_min_prefix_text" />
+
+        <TextView
+            android:id="@+id/pressure"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/pressure_prefix_text" />
+
+        <TextView
+            android:id="@+id/humidity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/humidity_prefix_text" />
+
+        <TextView
+            android:id="@+id/visibility"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/visibility_prefix_text" />
+
+        <TextView
+            android:id="@+id/wind_speed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/wind_speed_prefix_text" />
+
+        <TextView
+            android:id="@+id/wind_deg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/wind_deg_prefix_text" />
+
+        <TextView
+            android:id="@+id/clouds"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/clouds_prefix_text" />
+
+        <TextView
+            android:id="@+id/sunrise"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sunrise_prefix_text" />
+
+        <TextView
+            android:id="@+id/sunset"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sunset_prefix_text" />
+
+    </LinearLayout>
+</ScrollView>

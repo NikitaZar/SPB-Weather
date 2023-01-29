@@ -3,8 +3,6 @@ package ru.nikitazar.domain.model
 import com.google.gson.annotations.SerializedName
 import java.util.*
 
-private const val TIME_PATTERN = "dd.MM.yyyy hh:mm"
-
 data class WeatherData(
     val coord: Coord,
     val weather: List<Weather>,
@@ -28,7 +26,7 @@ data class WeatherData(
         visibility = visibility,
         wind = wind.toDomain(),
         clouds = clouds.toDomain(),
-        dt = dt,
+        dt = dt * 1000,
         sys = sys.toDomain(),
         timezone = timezone,
         id = id,
@@ -107,8 +105,8 @@ data class Sys(
         type = type,
         id = id,
         country = country,
-        sunrise = sunrise,
-        sunset = sunset,
+        sunrise = sunrise * 1000,
+        sunset = sunset * 1000,
     )
 }
 

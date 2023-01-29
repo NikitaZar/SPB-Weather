@@ -6,6 +6,7 @@
     <string name="forecast">Forecast</string>
 
     <string name="weather_text">Weather</string>
+    <string name="forecast_text">Forecast</string>
 
     <string name="weather_prefix_text">Weather: %1$s</string>
     <string name="temp_prefix_text">Temp: %1$s °C</string>
@@ -20,4 +21,5 @@
     <string name="clouds_prefix_text">Clouds: %1$s</string>
     <string name="sunrise_prefix_text">Sunrise: %1$s</string>
     <string name="sunset_prefix_text">Sunset: %1$s</string>
+    <string name="temp_prefix_forecast_text">%1$s °C</string>
 </resources>

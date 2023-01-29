@@ -3,12 +3,14 @@ package ru.nikitazar.data.repository
 import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import ru.nikitazar.data.api.ApiService
 import ru.nikitazar.data.error.ApiError
 import ru.nikitazar.data.error.NetworkError
 import ru.nikitazar.data.error.UnknownError
+import ru.nikitazar.domain.model.ForecastDataDomain
 import ru.nikitazar.domain.repository.WeatherRepository
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -25,6 +27,21 @@ class WeatherRepositoryImpl @Inject constructor(private val api: ApiService) : W
         try {
             while (true) {
                 val response = api.getWeather(city = CITY, appId = APP_ID)
+                val body = response.body() ?: throw ApiError(response.code(), response.message())
+                emit(body.toDomain())
+                delay(DELAY_REQ)
+            }
+        } catch (e: ApiError) {
+            throw e
+        } catch (e: NetworkError) {
+            throw e
+        }
+    }.flowOn(Dispatchers.IO)
+
+    override suspend fun getForecast() = flow {
+        try {
+            while (true) {
+                val response = api.getForecast(city = CITY, appId = APP_ID)
                 val body = response.body() ?: throw ApiError(response.code(), response.message())
                 emit(body.toDomain())
                 delay(DELAY_REQ)

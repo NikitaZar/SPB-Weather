@@ -14,7 +14,7 @@
 - скорость ветра
 - атмосферное давление
 
-![DetailsScreen](raw/preview/DetailsScreen.jpg)
+![HomeScreen](raw/preview/HomeScreen.jpg)
 
 ### 2. Экран детальной информации (Details) - расширенная информация по погоде в г.Санкт-Петербурге
 

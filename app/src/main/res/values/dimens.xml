@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="common_spacing">16dp</dimen>
+    <dimen name="space0.25x">1dp</dimen>
+    <dimen name="space0.5x">2dp</dimen>
+    <dimen name="space0.75x">3dp</dimen>
+    <dimen name="space1x">4dp</dimen>
+    <dimen name="space2x">8dp</dimen>
+    <dimen name="space3x">12dp</dimen>
+    <dimen name="space4x">16dp</dimen>
+    <dimen name="space6x">24dp</dimen>
+    <dimen name="space8x">32dp</dimen>
+    <dimen name="space12x">48dp</dimen>
+    <dimen name="space16x">64dp</dimen>
+    <dimen name="space32x">128dp</dimen>
+    <dimen name="space64x">256dp</dimen>
+    <dimen name="space80x">320dp</dimen>
+    <dimen name="space96x">384dp</dimen>
+
+    <dimen name="default_text">24sp</dimen>
+    <dimen name="title_text">42sp</dimen>
+
+</resources>

@@ -11,6 +11,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import ru.nikitazar.spbweather.R
 import ru.nikitazar.spbweather.databinding.FragmentHomeBinding
 import ru.nikitazar.spbweather.viewModel.WeatherViewModel
+import java.text.DecimalFormat
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -26,7 +27,14 @@ class HomeFragment : Fragment() {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         viewModel.dataWeather.observe(viewLifecycleOwner) {
-            binding.text.text = it.name
+            val df = DecimalFormat("#.#")
+            with(binding) {
+                city.text = it.name
+                temp.text = df.format(it.main.temp)
+                humidity.text = df.format(it.main.humidity)
+                windSpeed.text = df.format(it.wind.speed)
+                pressure.text = df.format(it.main.pressure)
+            }
         }
 
         return binding.root

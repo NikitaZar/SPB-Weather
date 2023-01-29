@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homeFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_home"
+        android:title="@string/home" />
+    <item
+        android:id="@+id/detailsFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_info"
+        android:title="@string/details" />
+    <item
+        android:id="@+id/forecastFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_list"
+        android:title="@string/forecast" />
+</menu>

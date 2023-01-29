@@ -10,4 +10,14 @@
         android:name="ru.nikitazar.spbweather.ui.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="ru.nikitazar.spbweather.ui.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" />
+    <fragment
+        android:id="@+id/forecastFragment"
+        android:name="ru.nikitazar.spbweather.ui.ForecastFragment"
+        android:label="fragment_forecast"
+        tools:layout="@layout/fragment_forecast" />
 </navigation>

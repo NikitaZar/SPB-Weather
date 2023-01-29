@@ -7,6 +7,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import ru.nikitazar.data.error.ApiError
+import ru.nikitazar.data.error.NetworkError
 import ru.nikitazar.domain.model.*
 import ru.nikitazar.domain.usecase.GetWeatherUseCase
 import javax.inject.Inject
@@ -26,6 +28,10 @@ private val empty = WeatherDataDomain(
     name = ""
 )
 
+const val REQ_ERR = 400
+const val NW_ERR = 1
+const val NO_ERR = 0
+
 @HiltViewModel
 class WeatherViewModel @Inject constructor(
     private val getWeatherUseCase: GetWeatherUseCase
@@ -33,10 +39,24 @@ class WeatherViewModel @Inject constructor(
 
     private val _dataWeather = MutableLiveData(empty)
 
+    val errState: LiveData<Int>
+        get() = _errState
+    private val _errState = MutableLiveData(0)
+
     @OptIn(ExperimentalCoroutinesApi::class)
     val dataWeather: LiveData<WeatherDataDomain>
         get() = _dataWeather
             .asFlow()
-            .flatMapLatest { getWeatherUseCase.execute() }
+            .flatMapLatest {
+                getWeatherUseCase.execute()
+            }
+            .catch { e ->
+                Log.e("errState", "vm: $e")
+                when (e) {
+                    is NetworkError -> _errState.value = NW_ERR
+                    is ApiError -> _errState.value = REQ_ERR
+                    is UnknownError -> _errState.value = REQ_ERR
+                }
+            }
             .asLiveData(Dispatchers.Default)
 }

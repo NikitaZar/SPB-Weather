@@ -22,4 +22,7 @@
     <string name="sunrise_prefix_text">Sunrise: %1$s</string>
     <string name="sunset_prefix_text">Sunset: %1$s</string>
     <string name="temp_prefix_forecast_text">%1$s °C</string>
+
+    <string name="err_req_mes">S.th. wrong. Try later</string>
+    <string name="err_nw_mes">Network error. Try later</string>
 </resources>

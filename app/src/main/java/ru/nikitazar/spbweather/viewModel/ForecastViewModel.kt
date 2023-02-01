@@ -35,11 +35,10 @@ class ForecastViewModel @Inject constructor(
                 getForecastUseCase.execute()
             }
             .catch { e ->
-                Log.e("errState", "vm: $e")
                 when (e) {
-                    is NetworkError -> _errState.value = NW_ERR
-                    is ApiError -> _errState.value = REQ_ERR
-                    is UnknownError -> _errState.value = REQ_ERR
+                    is NetworkError -> _errState.postValue(NW_ERR)
+                    is ApiError -> _errState.postValue(REQ_ERR)
+                    is UnknownError -> _errState.postValue(REQ_ERR)
                 }
             }
             .asLiveData(Dispatchers.Default)

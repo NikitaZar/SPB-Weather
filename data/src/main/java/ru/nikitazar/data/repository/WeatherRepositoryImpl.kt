@@ -4,10 +4,12 @@ import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import ru.nikitazar.data.api.ApiService
 import ru.nikitazar.data.error.ApiError
+import ru.nikitazar.data.error.AppError
 import ru.nikitazar.data.error.NetworkError
 import ru.nikitazar.data.error.UnknownError
 import ru.nikitazar.domain.model.ForecastDataDomain
@@ -24,32 +26,24 @@ private val DELAY_REQ = 10.minutes
 class WeatherRepositoryImpl @Inject constructor(private val api: ApiService) : WeatherRepository {
 
     override suspend fun getWeather() = flow {
-        try {
-            while (true) {
-                val response = api.getWeather(city = CITY, appId = APP_ID)
-                val body = response.body() ?: throw ApiError(response.code(), response.message())
-                emit(body.toDomain())
-                delay(DELAY_REQ)
-            }
-        } catch (e: ApiError) {
-            throw e
-        } catch (e: NetworkError) {
-            throw e
+        while (true) {
+            val response = api.getWeather(city = CITY, appId = APP_ID)
+            val body = response.body() ?: throw ApiError(response.code(), response.message())
+            emit(body.toDomain())
+            delay(DELAY_REQ)
         }
-    }.flowOn(Dispatchers.IO)
+    }
+        .catch { e -> throw AppError.from(e) }
+        .flowOn(Dispatchers.IO)
 
     override suspend fun getForecast() = flow {
-        try {
-            while (true) {
-                val response = api.getForecast(city = CITY, appId = APP_ID)
-                val body = response.body() ?: throw ApiError(response.code(), response.message())
-                emit(body.toDomain())
-                delay(DELAY_REQ)
-            }
-        } catch (e: ApiError) {
-            throw e
-        } catch (e: NetworkError) {
-            throw e
+        while (true) {
+            val response = api.getForecast(city = CITY, appId = APP_ID)
+            val body = response.body() ?: throw ApiError(response.code(), response.message())
+            emit(body.toDomain())
+            delay(DELAY_REQ)
         }
-    }.flowOn(Dispatchers.IO)
+    }
+        .catch { e -> throw AppError.from(e) }
+        .flowOn(Dispatchers.IO)
 }
